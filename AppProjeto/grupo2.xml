@@ -1,0 +1,103 @@
+<grupo>
+  <id>2</id>
+  <nome>grupo2</nome>
+  <usuarios class="linked-list">
+    <br.edu.ifpb.appprojeto.Usuario>
+      <id>1</id>
+      <nome>Laerton</nome>
+      <email>laerton240311@gmail.com </email>
+    </br.edu.ifpb.appprojeto.Usuario>
+  </usuarios>
+  <mensagens class="linked-list">
+    <br.edu.ifpb.appprojeto.Mensagem>
+      <id>0</id>
+      <user class="br.edu.ifpb.appprojeto.Usuario" reference="../../../usuarios/br.edu.ifpb.appprojeto.Usuario"/>
+      <mensagem>Este &apos;e outro teste.</mensagem>
+      <status>PENDETE</status>
+    </br.edu.ifpb.appprojeto.Mensagem>
+    <br.edu.ifpb.appprojeto.Mensagem>
+      <id>0</id>
+      <user class="br.edu.ifpb.appprojeto.Usuario" reference="../../../usuarios/br.edu.ifpb.appprojeto.Usuario"/>
+      <mensagem>Outra mensagem</mensagem>
+      <status>PENDETE</status>
+    </br.edu.ifpb.appprojeto.Mensagem>
+    <br.edu.ifpb.appprojeto.Mensagem>
+      <id>0</id>
+      <user class="br.edu.ifpb.appprojeto.Usuario" reference="../../../usuarios/br.edu.ifpb.appprojeto.Usuario"/>
+      <mensagem>Outra mensagem</mensagem>
+      <status>PENDETE</status>
+    </br.edu.ifpb.appprojeto.Mensagem>
+    <br.edu.ifpb.appprojeto.Mensagem>
+      <id>0</id>
+      <user class="br.edu.ifpb.appprojeto.Usuario" reference="../../../usuarios/br.edu.ifpb.appprojeto.Usuario"/>
+      <mensagem>Outra mensagem</mensagem>
+      <status>PENDETE</status>
+    </br.edu.ifpb.appprojeto.Mensagem>
+    <br.edu.ifpb.appprojeto.Mensagem>
+      <id>0</id>
+      <user class="br.edu.ifpb.appprojeto.Usuario" reference="../../../usuarios/br.edu.ifpb.appprojeto.Usuario"/>
+      <mensagem>Outra mensagem</mensagem>
+      <status>PENDETE</status>
+    </br.edu.ifpb.appprojeto.Mensagem>
+    <br.edu.ifpb.appprojeto.Mensagem>
+      <id>0</id>
+      <user class="br.edu.ifpb.appprojeto.Usuario" reference="../../../usuarios/br.edu.ifpb.appprojeto.Usuario"/>
+      <mensagem>Outra mensagem</mensagem>
+      <status>PENDETE</status>
+    </br.edu.ifpb.appprojeto.Mensagem>
+    <br.edu.ifpb.appprojeto.Mensagem>
+      <id>0</id>
+      <user class="br.edu.ifpb.appprojeto.Usuario" reference="../../../usuarios/br.edu.ifpb.appprojeto.Usuario"/>
+      <mensagem>Outra mensagem</mensagem>
+      <status>PENDETE</status>
+    </br.edu.ifpb.appprojeto.Mensagem>
+    <br.edu.ifpb.appprojeto.Mensagem>
+      <id>0</id>
+      <user class="br.edu.ifpb.appprojeto.Usuario" reference="../../../usuarios/br.edu.ifpb.appprojeto.Usuario"/>
+      <mensagem>Outra mensagem</mensagem>
+      <status>PENDETE</status>
+    </br.edu.ifpb.appprojeto.Mensagem>
+    <br.edu.ifpb.appprojeto.Mensagem>
+      <id>0</id>
+      <user class="br.edu.ifpb.appprojeto.Usuario" reference="../../../usuarios/br.edu.ifpb.appprojeto.Usuario"/>
+      <mensagem>Outra mensagem</mensagem>
+      <status>PENDETE</status>
+    </br.edu.ifpb.appprojeto.Mensagem>
+    <br.edu.ifpb.appprojeto.Mensagem>
+      <id>0</id>
+      <user class="br.edu.ifpb.appprojeto.Usuario" reference="../../../usuarios/br.edu.ifpb.appprojeto.Usuario"/>
+      <mensagem>Outra mensagem</mensagem>
+      <status>PENDETE</status>
+    </br.edu.ifpb.appprojeto.Mensagem>
+    <br.edu.ifpb.appprojeto.Mensagem>
+      <id>0</id>
+      <user class="br.edu.ifpb.appprojeto.Usuario" reference="../../../usuarios/br.edu.ifpb.appprojeto.Usuario"/>
+      <mensagem>Outra mensagem</mensagem>
+      <status>PENDETE</status>
+    </br.edu.ifpb.appprojeto.Mensagem>
+    <br.edu.ifpb.appprojeto.Mensagem>
+      <id>0</id>
+      <user class="br.edu.ifpb.appprojeto.Usuario" reference="../../../usuarios/br.edu.ifpb.appprojeto.Usuario"/>
+      <mensagem>Outra mensagem</mensagem>
+      <status>PENDETE</status>
+    </br.edu.ifpb.appprojeto.Mensagem>
+    <br.edu.ifpb.appprojeto.Mensagem>
+      <id>0</id>
+      <user class="br.edu.ifpb.appprojeto.Usuario" reference="../../../usuarios/br.edu.ifpb.appprojeto.Usuario"/>
+      <mensagem>Outra mensagem</mensagem>
+      <status>PENDETE</status>
+    </br.edu.ifpb.appprojeto.Mensagem>
+    <br.edu.ifpb.appprojeto.Mensagem>
+      <id>0</id>
+      <user class="br.edu.ifpb.appprojeto.Usuario" reference="../../../usuarios/br.edu.ifpb.appprojeto.Usuario"/>
+      <mensagem>Outra mensagem</mensagem>
+      <status>PENDETE</status>
+    </br.edu.ifpb.appprojeto.Mensagem>
+    <br.edu.ifpb.appprojeto.Mensagem>
+      <id>0</id>
+      <user class="br.edu.ifpb.appprojeto.Usuario" reference="../../../usuarios/br.edu.ifpb.appprojeto.Usuario"/>
+      <mensagem>Outra mensagem</mensagem>
+      <status>PENDETE</status>
+    </br.edu.ifpb.appprojeto.Mensagem>
+  </mensagens>
+</grupo>
