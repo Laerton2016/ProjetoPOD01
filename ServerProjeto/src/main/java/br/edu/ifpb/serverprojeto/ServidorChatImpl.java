@@ -25,7 +25,8 @@ public class ServidorChatImpl extends java.rmi.server.UnicastRemoteObject implem
     
     
     private ArrayList<ISala> salas = new ArrayList<>();
-    
+    private ArrayList<IUsuario> cadastrados = new ArrayList<>();
+    private ArrayList<IUsuario> logados = new ArrayList<>();
 
     public ServidorChatImpl() throws RemoteException {
         super();
@@ -93,8 +94,27 @@ public class ServidorChatImpl extends java.rmi.server.UnicastRemoteObject implem
     public ArrayList<IUsuario> getUserDesconectados(int idSala) throws RemoteException{
         return salas.get(idSala-1).getUserDesconectados();
     }
+    @Override
+    public IUsuario login(String email, String senha) throws RemoteException{
+        for (IUsuario usuario : this.cadastrados) {
+            if(usuario.getEmail().equals(email)&& usuario.getSenha().equals(senha)){
+                logados.add(usuario);
+                return usuario;
+            }
+        }
+        throw new RemoteException("Usuairo nao cadastrado.");
+    }
     
+    @Override  
+    public String cadastrarUser(IUsuario user) throws RemoteException{
+        cadastrados.add(user);
+        return "Usuario cadastrado com sucesso!";
+    }
     
-      
+    @Override
+    public String logout (IUsuario user) throws RemoteException{
+        logados.remove(user);
+        return "Usaurio deslogado com sucesso!";
+    }
 
 }

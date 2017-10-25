@@ -67,4 +67,28 @@ public interface IServidorChat extends Remote {
      * @throws RemoteException 
      */
     ArrayList<IUsuario> getUserDesconectados(int idSala) throws RemoteException;
+    /***
+     * Loga o usuario no chat
+     * @param email - Email do  usuairo para logar 
+     * @param senha - Senha para logar
+     * @return Informacao de logado
+     * @throws RemoteException 
+     */
+    IUsuario login(String email, String senha) throws RemoteException;
+    
+    /***
+     * Cadastra o usuario no servidor
+     * @param user- Usuario a ser cadastrado
+     * @return - Mensagem de informaccao
+     * @throws RemoteException 
+     */
+    String cadastrarUser(IUsuario user) throws RemoteException;
+    
+    /***
+     * Desloga o usuairo do Chat.
+     * @param user - Usuario a ser deslogado
+     * @return
+     * @throws RemoteException 
+     */
+    String logout (IUsuario user) throws RemoteException;
 }

@@ -15,7 +15,7 @@ import java.util.Objects;
  */
 
 public class Usuario implements IUsuario, Serializable {
-    private String nome, email;
+    private String nome, email,senha;
     
     public Usuario() {
     }
@@ -47,7 +47,10 @@ public class Usuario implements IUsuario, Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 7;
+        int hash = 5;
+        hash = 59 * hash + Objects.hashCode(this.nome);
+        hash = 59 * hash + Objects.hashCode(this.email);
+        hash = 59 * hash + Objects.hashCode(this.senha);
         return hash;
     }
 
@@ -69,7 +72,23 @@ public class Usuario implements IUsuario, Serializable {
         if (!Objects.equals(this.email, other.email)) {
             return false;
         }
+        if (!Objects.equals(this.senha, other.senha)) {
+            return false;
+        }
         return true;
+    }
+
+    
+    
+
+    @Override
+    public String getSenha() {
+        return this.senha;
+    }
+
+    @Override
+    public void setSenha(String senha) {
+        this.senha =senha;
     }
 
     

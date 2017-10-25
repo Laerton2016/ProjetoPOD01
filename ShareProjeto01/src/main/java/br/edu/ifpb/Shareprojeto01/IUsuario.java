@@ -15,6 +15,9 @@ import java.rmi.Remote;
 @XStreamAlias("usuario")
 public interface IUsuario extends Remote{
 
+    String getSenha();
+    void setSenha(String senha);
+    
     String getEmail();
 
     //int getId();
