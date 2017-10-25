@@ -6,6 +6,8 @@
 package br.edu.ifpb.Shareprojeto01;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
+import java.rmi.Remote;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 /**
@@ -13,18 +15,16 @@ import java.util.ArrayList;
  * @author laerton
  */
 @XStreamAlias("notificacao")
-public interface INotificacao {
+public interface INotificacao extends Remote{
 
-    void addMensagem(IMensagem mensagem);
+    void addMensagem(IMensagem mensagem) throws RemoteException;
 
-    ArrayList<IMensagem> getMensagensG1();
+    ArrayList<IMensagem> getMensagensG1() throws RemoteException;
 
-    ArrayList<IMensagem> getMensagensG2();
+    ArrayList<IMensagem> getMenG1() throws RemoteException;
+    
+    Integer getTotalMensagens()throws RemoteException;
 
-    ArrayList<IMensagem> getMensagensG3();
-
-    Integer getTotalMensagens();
-
-    IUsuario getUser();
+    IUsuario getUser() throws RemoteException;
     
 }

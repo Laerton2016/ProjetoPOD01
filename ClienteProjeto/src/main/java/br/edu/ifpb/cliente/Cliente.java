@@ -41,6 +41,7 @@ public class Cliente {
             recuperaDados(scanner);
             try {
             final IServidorChat chat = (IServidorChat) Naming.lookup( "rmi://localhost:1098/ServidorChat" );
+            verificarNotificacao(chat);
             if (credenciais.getUser() == null){
                 menu1(scanner, chat);
             }else{
@@ -361,5 +362,54 @@ public class Cliente {
         return false;
     }
     
+    private static ArrayList<IMensagem> consultaNotificacoes(IServidorChat chat,int idSala) throws RemoteException{
+        return chat.getNotificacaos(credenciais.getUser(), idSala);
+    }
+
+    private static void verificarNotificacao(IServidorChat chat) throws RemoteException {
+        System.err.println("Verificando ser ha notificacoes.");
+        ArrayList<IMensagem> s1 = new ArrayList<>();
+        ArrayList<IMensagem> s2 = new ArrayList<>();
+        ArrayList<IMensagem> s3 = new ArrayList<>();
+        
+        if (credenciais.isAtivoS1()){
+            s1 = consultaNotificacoes(chat, 1);
+        }
+        
+        if (credenciais.isAtivoS2()){
+            s2 = consultaNotificacoes(chat, 2);
+        }
+        
+        if (credenciais.isAtivoS3()){
+            s3 = consultaNotificacoes(chat, 3);
+        }
+        
+        int q = s1.size() + s2.size() +s3.size();
+        System.out.println("Existem "+ q + " notificacoes.");
+        
+        if (q > 0){
+            if (credenciais.isAtivoS1()){
+                System.out.println("Mensagens para voce da Sala1 ");
+                for (IMensagem iMensagem : s1) {
+                    System.out.println(iMensagem.getUser().getNome() + ":" + iMensagem.getMensagem() + " (Publicada quando off-line)");
+                }
+            }
+            
+            if (credenciais.isAtivoS2()){
+                System.out.println("Mensagens para voce da Sala2 ");
+                for (IMensagem iMensagem : s2) {
+                    System.out.println(iMensagem.getUser().getNome() + ":" + iMensagem.getMensagem() + " (Publicada quando off-line)");
+                }
+            }
+            
+            if (credenciais.isAtivoS3()){
+                System.out.println("Mensagens para voce da Sala3 ");
+                for (IMensagem iMensagem : s3) {
+                    System.out.println(iMensagem.getUser().getNome() + ":" + iMensagem.getMensagem() + " (Publicada quando off-line)");
+                }
+            }
+        }
+        
+    }
     
 }

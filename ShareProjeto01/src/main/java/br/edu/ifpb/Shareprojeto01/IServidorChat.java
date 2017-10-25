@@ -5,8 +5,6 @@
  */
 package br.edu.ifpb.Shareprojeto01;
 
-import br.edu.ifpb.Shareprojeto01.ISala;
-import br.edu.ifpb.Shareprojeto01.IUsuario;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -91,4 +89,13 @@ public interface IServidorChat extends Remote {
      * @throws RemoteException 
      */
     String logout (IUsuario user) throws RemoteException;
+    /***
+     * Retorna todas as notificacoes para um usuario.
+     * @param user- Usuario que sera notificado
+     * @return
+     * @throws RemoteException 
+     */
+    ArrayList<IMensagem> getNotificacaos(IUsuario user,int idSala) throws RemoteException;
+    
+    ArrayList<INotificacao> getAllNotificacaos(int idSala) throws RemoteException;
 }

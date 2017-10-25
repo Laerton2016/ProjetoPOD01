@@ -67,4 +67,23 @@ public interface ISala extends Remote{
      * @return 
      */
     ArrayList<IUsuario> getUserDesconectados() throws RemoteException;
+    /***
+     * Retorna as notificacoes
+     * @param user
+     * @return
+     * @throws RemoteException 
+     */
+    ArrayList<IMensagem> getNotificacaos(IUsuario user ) throws RemoteException;
+    
+    IGrupo getGrupo();
+
+    void setGrupo(IGrupo grupo);
+
+    ArrayList<IUsuario> getConectados();
+
+    void setConectados(ArrayList<IUsuario> conectados);
+
+    ArrayList<INotificacao> getAllNotificacao();
+
+    void setAllNotificacao(ArrayList<INotificacao> allNotificacao);
 }

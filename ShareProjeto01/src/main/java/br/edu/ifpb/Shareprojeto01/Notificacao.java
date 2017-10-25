@@ -6,6 +6,7 @@
 package br.edu.ifpb.Shareprojeto01;
 
 import java.io.Serializable;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 /**
@@ -15,10 +16,7 @@ import java.util.ArrayList;
 public class Notificacao implements INotificacao, Serializable {
     private IUsuario user ;
     private ArrayList<IMensagem> menG1 = new ArrayList<>();
-    
-    private ArrayList<IMensagem> menG2 = new ArrayList<>();
-    
-    private ArrayList<IMensagem> menG3 = new ArrayList<>();
+   
 
     
     public Notificacao(IUsuario user) {
@@ -28,44 +26,35 @@ public class Notificacao implements INotificacao, Serializable {
     
     
     @Override
-    public void addMensagem(IMensagem mensagem){
-        if (mensagem.getGrupoIndex() == 1){
+    public void addMensagem(IMensagem mensagem)throws RemoteException{
             menG1.add(mensagem);
-        }else if (mensagem.getGrupoIndex() == 2){
-            menG2.add(mensagem);
-        }else if (mensagem.getGrupoIndex() == 3){
-            menG3.add(mensagem);
-        }
+       
     }
     
     @Override
-    public Integer getTotalMensagens(){
-        return menG1.size() +menG2.size() + menG3.size();
+    public Integer getTotalMensagens() throws RemoteException{
+        return menG1.size();
     }
     
     @Override
-    public ArrayList<IMensagem> getMensagensG1(){
+    public ArrayList<IMensagem> getMensagensG1() throws RemoteException{
         ArrayList<IMensagem> copia = (ArrayList<IMensagem>) menG1.clone();
         menG1.clear();
         return copia;
     }
     
     @Override
-    public ArrayList<IMensagem> getMensagensG2(){
-        ArrayList<IMensagem> copia = (ArrayList<IMensagem>) menG2.clone();
-        menG1.clear();
-        return copia;
+    public ArrayList<IMensagem> getMenG1() throws RemoteException{
+        return menG1;
+    }
+
+    public void setMenG1(ArrayList<IMensagem> menG1) throws RemoteException{
+        this.menG1 = menG1;
     }
     
-    @Override
-    public ArrayList<IMensagem> getMensagensG3(){
-        ArrayList<IMensagem> copia = (ArrayList<IMensagem>) menG3.clone();
-        menG1.clear();
-        return copia;
-    }
     
     @Override
-    public IUsuario getUser(){
+    public IUsuario getUser() throws RemoteException{
         return user;
     }
 }

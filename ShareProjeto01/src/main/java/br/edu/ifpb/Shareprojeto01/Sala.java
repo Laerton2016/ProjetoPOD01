@@ -6,15 +6,10 @@
 package br.edu.ifpb.Shareprojeto01;
 
 
-import br.edu.ifpb.Shareprojeto01.ISala;
-import br.edu.ifpb.Shareprojeto01.Grupo;
-import br.edu.ifpb.Shareprojeto01.IGrupo;
-import br.edu.ifpb.Shareprojeto01.IMensagem;
-import br.edu.ifpb.Shareprojeto01.INotificacao;
-import br.edu.ifpb.Shareprojeto01.IUsuario;
 import java.io.Serializable;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.Hashtable;
 
 /**
  *
@@ -24,7 +19,8 @@ public class Sala implements ISala,Serializable {
     
     private IGrupo grupo;
     private ArrayList<IUsuario> conectados = new ArrayList<>();
-    private ArrayList<INotificacao> notificacao = new ArrayList<>();
+    private ArrayList<INotificacao> allNotificacao = new ArrayList<>();
+    private Hashtable<String, IMensagem> notas = new Hashtable<>();
     
     public Sala(String nome, int id) {
         this.grupo = new Grupo(id, nome);
@@ -51,6 +47,7 @@ public class Sala implements ISala,Serializable {
             desconectar(mensagem.getUser());
             mensagem.setMensagem("Saiu da sala!");
         }
+        gerarNotificacao(mensagem);
         this.grupo.addMensagem(mensagem);
     }
     
@@ -106,5 +103,72 @@ public class Sala implements ISala,Serializable {
         }
         return desconectados;
     }
+
+    private void gerarNotificacao(IMensagem mensagem) throws RemoteException {
+        IUsuario user = mensagem.getUser();
+        for (IUsuario usuario : grupo.getUsuarios()) {
+            //if(!conectados.contains(usuario)){
+                for (INotificacao iNotificacao : allNotificacao) {
+                    if (iNotificacao.getUser().getEmail().equals(user.getEmail()) && 
+                    iNotificacao.getUser().getSenha().equals(user.getSenha()) && 
+                    iNotificacao.getUser().getNome().equals(user.getNome())){
+                        iNotificacao.addMensagem(mensagem);
+                        break;
+                    }
+                }
+                Notificacao note = new Notificacao(user);
+                note.addMensagem(mensagem);
+                allNotificacao.add(note);
+            //}
+        }
+    }
+    
+    @Override
+    public ArrayList<IMensagem> getNotificacaos(IUsuario user ) throws RemoteException{
+        ArrayList<IMensagem> retorno = new ArrayList<>();
+        for (INotificacao iNotificacao : allNotificacao) {
+            if (iNotificacao.getUser().getEmail().equals(user.getEmail()) && 
+                    iNotificacao.getUser().getSenha().equals(user.getSenha()) && 
+                    iNotificacao.getUser().getNome().equals(user.getNome())){
+                retorno = iNotificacao.getMensagensG1();
+                break;
+            }
+        }
+        return retorno;
+    }
+
+    @Override
+    public IGrupo getGrupo() {
+        return grupo;
+    }
+
+    @Override
+    public void setGrupo(IGrupo grupo) {
+        this.grupo = grupo;
+    }
+
+    @Override
+    public ArrayList<IUsuario> getConectados() {
+        return conectados;
+    }
+
+    @Override
+    public void setConectados(ArrayList<IUsuario> conectados) {
+        this.conectados = conectados;
+    }
+
+    @Override
+    public ArrayList<INotificacao> getAllNotificacao() {
+        return allNotificacao;
+    }
+
+    @Override
+    public void setAllNotificacao(ArrayList<INotificacao> allNotificacao) {
+        this.allNotificacao = allNotificacao;
+    }
+    
+    
+    
+    
     
 }

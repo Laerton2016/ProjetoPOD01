@@ -1,6 +1,7 @@
 package br.edu.ifpb.serverprojeto;
 
 import br.edu.ifpb.Shareprojeto01.IMensagem;
+import br.edu.ifpb.Shareprojeto01.INotificacao;
 import br.edu.ifpb.Shareprojeto01.Sala;
 import br.edu.ifpb.Shareprojeto01.IServidorChat;
 import br.edu.ifpb.Shareprojeto01.ISala;
@@ -78,6 +79,7 @@ public class ServidorChatImpl extends java.rmi.server.UnicastRemoteObject implem
             salas.get(idSala-1).sairSala(men.getUser());
         }
         salas.get(idSala-1).enviaMensagem(men);
+        
     }
     
     @Override
@@ -117,4 +119,14 @@ public class ServidorChatImpl extends java.rmi.server.UnicastRemoteObject implem
         return "Usaurio deslogado com sucesso!";
     }
 
+    @Override
+    public ArrayList<IMensagem> getNotificacaos(IUsuario user,int idSala) throws RemoteException {
+        return this.salas.get(idSala).getNotificacaos(user);
+        
+    }
+    
+    @Override
+    public ArrayList<INotificacao> getAllNotificacaos(int idSala) throws RemoteException {
+        return this.salas.get(idSala).getAllNotificacao();
+    }
 }

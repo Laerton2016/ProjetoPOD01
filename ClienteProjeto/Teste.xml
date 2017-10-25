@@ -3,7 +3,7 @@
   <menS2/>
   <menS3/>
   <ativoS1>true</ativoS1>
-  <ativoS2>true</ativoS2>
+  <ativoS2>false</ativoS2>
   <ativoS3>false</ativoS3>
   <user class="br.edu.ifpb.Shareprojeto01.Usuario">
     <nome>Teste</nome>
