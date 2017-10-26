@@ -20,7 +20,7 @@ public class Sala implements ISala,Serializable {
     private IGrupo grupo;
     private ArrayList<IUsuario> conectados = new ArrayList<>();
     private ArrayList<INotificacao> allNotificacao = new ArrayList<>();
-    private Hashtable<String, IMensagem> notas = new Hashtable<>();
+    private Hashtable<String, INotificacao> notas = new Hashtable<>();
     
     public Sala(String nome, int id) {
         this.grupo = new Grupo(id, nome);
@@ -106,7 +106,7 @@ public class Sala implements ISala,Serializable {
 
     private void gerarNotificacao(IMensagem mensagem) throws RemoteException {
         IUsuario user = mensagem.getUser();
-        for (IUsuario usuario : grupo.getUsuarios()) {
+        /*for (IUsuario usuario : grupo.getUsuarios()) {
             //if(!conectados.contains(usuario)){
                 for (INotificacao iNotificacao : allNotificacao) {
                     if (iNotificacao.getUser().getEmail().equals(user.getEmail()) && 
@@ -117,24 +117,36 @@ public class Sala implements ISala,Serializable {
                     }
                 }
                 Notificacao note = new Notificacao(user);
+                note.setIdSala(this.grupo.getId());
                 note.addMensagem(mensagem);
                 allNotificacao.add(note);
             //}
+        
+        }*/
+        for (IUsuario userDesconectado : getUserDesconectados()) {
+            if(notas.containsKey(userDesconectado.getEmail())){
+                notas.get(userDesconectado.getEmail()).addMensagem(mensagem);
+            }else{
+                INotificacao nota = new Notificacao(userDesconectado);
+                nota.addMensagem(mensagem);
+                nota.setIdSala(grupo.getId());
+                notas.put(userDesconectado.getEmail(), nota);
+            }
         }
     }
     
     @Override
     public ArrayList<IMensagem> getNotificacaos(IUsuario user ) throws RemoteException{
         ArrayList<IMensagem> retorno = new ArrayList<>();
-        for (INotificacao iNotificacao : allNotificacao) {
+        /*for (INotificacao iNotificacao : allNotificacao) {
             if (iNotificacao.getUser().getEmail().equals(user.getEmail()) && 
                     iNotificacao.getUser().getSenha().equals(user.getSenha()) && 
                     iNotificacao.getUser().getNome().equals(user.getNome())){
                 retorno = iNotificacao.getMensagensG1();
                 break;
             }
-        }
-        return retorno;
+        }*/
+        return notas.get(user.getEmail()).getMensagensG1();
     }
 
     @Override
@@ -158,13 +170,13 @@ public class Sala implements ISala,Serializable {
     }
 
     @Override
-    public ArrayList<INotificacao> getAllNotificacao() {
-        return allNotificacao;
+    public Hashtable<String, INotificacao> getAllNotificacao() {
+        return notas;
     }
 
     @Override
-    public void setAllNotificacao(ArrayList<INotificacao> allNotificacao) {
-        this.allNotificacao = allNotificacao;
+    public void setAllNotificacao(Hashtable<String, INotificacao> allNotificacao) {
+        this.notas = allNotificacao;
     }
     
     

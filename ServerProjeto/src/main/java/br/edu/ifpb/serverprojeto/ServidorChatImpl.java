@@ -1,5 +1,6 @@
 package br.edu.ifpb.serverprojeto;
 
+import br.edu.ifpb.Shareprojeto01.IArquivoService;
 import br.edu.ifpb.Shareprojeto01.IMensagem;
 import br.edu.ifpb.Shareprojeto01.INotificacao;
 import br.edu.ifpb.Shareprojeto01.Sala;
@@ -10,6 +11,7 @@ import br.edu.ifpb.Shareprojeto01.Mensagem;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Hashtable;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -24,11 +26,12 @@ import java.util.Calendar;
 public class ServidorChatImpl extends java.rmi.server.UnicastRemoteObject implements IServidorChat {
 
     
-    
+    private IArquivoService app = null;
     private ArrayList<ISala> salas = new ArrayList<>();
     private ArrayList<IUsuario> cadastrados = new ArrayList<>();
     private ArrayList<IUsuario> logados = new ArrayList<>();
-
+    
+    
     public ServidorChatImpl() throws RemoteException {
         super();
         salas.add(new Sala("sala1", 1));
@@ -110,6 +113,7 @@ public class ServidorChatImpl extends java.rmi.server.UnicastRemoteObject implem
     @Override  
     public String cadastrarUser(IUsuario user) throws RemoteException{
         cadastrados.add(user);
+        app.gravaUsuariosCadastrados(cadastrados);
         return "Usuario cadastrado com sucesso!";
     }
     
@@ -126,7 +130,26 @@ public class ServidorChatImpl extends java.rmi.server.UnicastRemoteObject implem
     }
     
     @Override
-    public ArrayList<INotificacao> getAllNotificacaos(int idSala) throws RemoteException {
+    public Hashtable<String, INotificacao> getAllNotificacaos(int idSala) throws RemoteException {
         return this.salas.get(idSala).getAllNotificacao();
     }
+
+    @Override
+    public void setServico(IArquivoService app)throws RemoteException{
+        this.app = app;
+    }
+
+    public void setSalas(ArrayList<ISala> salas) {
+        this.salas = salas;
+    }
+
+    public void setCadastrados(ArrayList<IUsuario> cadastrados) {
+        this.cadastrados = cadastrados;
+    }
+
+    public void setLogados(ArrayList<IUsuario> logados) {
+        this.logados = logados;
+    }
+    
+    
 }

@@ -1,0 +1,19 @@
+<colecaoUsuarios>
+  <usuarios>
+    <br.edu.ifpb.Shareprojeto01.Usuario>
+      <nome>casa</nome>
+      <email>c</email>
+      <senha>c</senha>
+    </br.edu.ifpb.Shareprojeto01.Usuario>
+    <br.edu.ifpb.Shareprojeto01.Usuario>
+      <nome>Novo</nome>
+      <email>b</email>
+      <senha>b</senha>
+    </br.edu.ifpb.Shareprojeto01.Usuario>
+    <br.edu.ifpb.Shareprojeto01.Usuario>
+      <nome>Novo</nome>
+      <email>q</email>
+      <senha>q</senha>
+    </br.edu.ifpb.Shareprojeto01.Usuario>
+  </usuarios>
+</colecaoUsuarios>

@@ -27,4 +27,7 @@ public interface INotificacao extends Remote{
 
     IUsuario getUser() throws RemoteException;
     
+    int getIdSala() ;
+    
+    void setIdSala(int idSala);
 }

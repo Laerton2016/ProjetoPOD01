@@ -9,6 +9,7 @@ package br.edu.ifpb.Shareprojeto01;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.Hashtable;
 
 /**
  *
@@ -83,7 +84,7 @@ public interface ISala extends Remote{
 
     void setConectados(ArrayList<IUsuario> conectados);
 
-    ArrayList<INotificacao> getAllNotificacao();
+    Hashtable<String, INotificacao> getAllNotificacao();
 
-    void setAllNotificacao(ArrayList<INotificacao> allNotificacao);
+    void setAllNotificacao(Hashtable<String, INotificacao> allNotificacao);
 }

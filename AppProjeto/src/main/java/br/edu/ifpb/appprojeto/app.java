@@ -5,9 +5,15 @@
  */
 package br.edu.ifpb.appprojeto;
 
+import br.edu.ifpb.Shareprojeto01.IArquivoService;
 import com.dropbox.core.DbxException;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.rmi.Naming;
+import java.rmi.Remote;
+import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
 
 
 /**
@@ -18,8 +24,15 @@ public class app {
    
 
     public static void main(String args[]) throws DbxException, FileNotFoundException, IOException {
-        
-        
+    
+         try {
+        Registry registry = LocateRegistry.createRegistry(1097);
+        IArquivoService server = new ServiceArquivo();
+        Naming.rebind("rmi://localhost:1097/Servico", server);
+        } catch (RemoteException e){
+            System.out.println("Trouble: "+e);
+        }
+        /*
         ServiceArquivo service = new ServiceArquivo();
         FileDropBox fdb = new FileDropBox();
         
@@ -32,7 +45,7 @@ public class app {
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
-        
+        */
                  
         
       

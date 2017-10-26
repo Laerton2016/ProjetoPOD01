@@ -27,13 +27,6 @@ import java.util.logging.Logger;
 
 public class Cliente {
     
-    /*private static ArrayList<IMensagem> menS1 = new ArrayList<>();
-    private static ArrayList<IMensagem> menS2 = new ArrayList<>();
-    private static ArrayList<IMensagem> menS3 = new ArrayList<>();
-    private static boolean ativoS1 = false;
-    private static boolean ativoS2 = false;
-    private static boolean ativoS3 = false;
-    private static IUsuario user;*/
     private static Credencias credenciais =new Credencias();
     
     public static void main( String args[] ) {

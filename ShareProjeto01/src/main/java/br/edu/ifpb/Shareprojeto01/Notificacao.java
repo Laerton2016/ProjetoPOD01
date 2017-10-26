@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public class Notificacao implements INotificacao, Serializable {
     private IUsuario user ;
     private ArrayList<IMensagem> menG1 = new ArrayList<>();
-   
+    private int idSala =0;
 
     
     public Notificacao(IUsuario user) {
@@ -57,4 +57,15 @@ public class Notificacao implements INotificacao, Serializable {
     public IUsuario getUser() throws RemoteException{
         return user;
     }
+    
+    @Override
+    public int getIdSala() {
+        return idSala;
+    }
+    
+    @Override
+    public void setIdSala(int idSala) {
+        this.idSala = idSala;
+    }
+    
 }
